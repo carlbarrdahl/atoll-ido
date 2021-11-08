@@ -1,19 +1,9 @@
 import React from "react";
 
-import {
-  Divider,
-  Box,
-  Heading,
-  Text,
-  Flex,
-  SimpleGrid,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Flex, SimpleGrid, Image } from "@chakra-ui/react";
 import NextLink from "next/link";
 import Layout from "../components/Layout";
 
-import TransactionsTable from "../components/TransactionsTable";
-import MerchantSettings from "../components/MerchantSettings";
 import { formatMoney } from "../utils/format";
 
 const projects = require("../data");

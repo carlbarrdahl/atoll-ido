@@ -138,6 +138,7 @@ export function useWithdraw() {
     async (_amount) => {
       try {
         const amount = ethers.utils.parseEther(String(_amount));
+        console.log("Withdrawing:", amount, _amount);
         return ido.withdraw(amount);
       } catch (error) {
         console.log(error);
