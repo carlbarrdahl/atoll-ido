@@ -1,0 +1,45 @@
+- Users
+
+  - ido platform admin
+  - project owner
+  - staking user
+
+- [x] Add ChakraUI
+- [x] Connect Wallet
+- [ ] List IDOs / Projects
+  - [ ] Fetch from backend
+    - [ ] Get from Firebase DB
+  - [x] Render Upcoming Projects
+  - [x] Render Funded Projects
+- [ ] View IDO
+  - [x] Render Name
+  - [x] Render Markdown
+  - [ ] Render ActionBox
+    - [x] Render total raise amount
+    - [ ] Render raise progress
+      - [ ] Get progress from Smart Contract
+    - [x] Apply for whitelist / KYC
+    - [x] Stake Token
+    - [x] Withdraw Token
+    - [ ] Claim Reward Token
+- [ ] IDO Smart Contract
+  - [x] create
+  - [x] stake(amount)
+  - [x] TokenContract.approveStakeERC20(idoAddress, tokenAmount)
+  - [ ] TokenContract.isApproved(address, amount, idoAddress)
+  - [x] withdraw(amount)
+  - [x] claim
+- [ ] Client to interact with contracts
+  - [x] Stake
+  - [x] Approve token transfer
+  - [x] Withdraw
+  - [x] Claim reward
+  - [ ] Funding progress
+- [ ] Create IDO script (hardhat)
+  - [ ] IDOContract.create()
+  - [ ] Call API with details to create project on backend
+- [x] KYC with Stripe Identity
+  - [x] Verify Button to initiate verify flow
+  - [x] api to get client_secret
+  - [x] api to get KYC state for user
+  - [x] Receive webhook from Stripe and set kyc for user to true

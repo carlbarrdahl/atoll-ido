@@ -1,0 +1,20 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", ".git/**"],
+    "rewrites": [
+      {
+        "source": "/api",
+        "function": "api"
+      }
+    ]
+  },
+  "functions": {
+    "source": "./functions",
+    "runtime": "nodejs14",
+    "ignore": ["**/node_modules/**", ".git/**"]
+  }
+}

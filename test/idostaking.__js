@@ -1,0 +1,137 @@
+const { expect } = require("chai");
+let hre = require("hardhat");
+// require("@reef-defi/hardhat-reef");
+
+// if (process.env.REEF) {
+// }
+
+const wait = async (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const getEthers = () => {
+  // console.log("hre", hre.config);
+  // console.log(hre.reef);
+  if (hre.config.defaultNetwork === "reef") {
+    // await wait(1000);
+    // console.log(hre.reef);
+    return hre.reef;
+  }
+  return hre.ethers;
+  // return hre.config.defaultNetwork === "reef" ? hre.reef : hre.ethers;
+};
+
+const {
+  utils: { parseEther },
+} = hre.ethers;
+describe("IDOStaking", function () {
+  before(() => {});
+  it("Should create a new IDO", async function () {
+    const ethers = getEthers();
+    // const { getSigners, getContractFactory } = ethers;
+    // console.log(123123, ethers);
+    const [owner, staker1, staker2] = await ethers.getSigners();
+
+    console.log(await owner.getAddress(), owner);
+    const users = [
+      {
+        wallet: staker1,
+        stakeAmount: parseEther("0.3"),
+      },
+      {
+        wallet: staker2,
+        stakeAmount: parseEther("0.1"),
+      },
+    ];
+    // return;
+    const IDOStaking = await ethers.getContractFactory("IDOStaking");
+    const Token = await ethers.getContractFactory("ERC20Mintable");
+    const stakingToken = await Token.deploy("StakingToken", "ST");
+    // const rewardToken = await Token.deploy("RewardToken", "RT");
+    console.log(IDOStaking);
+    return;
+    const vestingPeriod = 3; // seconds
+    const ido = await IDOStaking.deploy(
+      stakingToken.address,
+      rewardToken.address,
+      vestingPeriod
+    );
+    await ido.deployed();
+    await rewardToken.mint(ido.address, parseEther("1"));
+
+    console.log(ido.address);
+    console.log(stakingToken.address);
+    console.log(rewardToken.address);
+    return;
+    // Verify IDO state
+    expect((await ido.vestingPeriod()).toNumber()).to.equal(vestingPeriod);
+    expect(await ido.stakingToken()).to.equal(stakingToken.address);
+    expect(await ido.rewardToken()).to.equal(rewardToken.address);
+
+    /*
+    await Promise.all(
+      users.map(async (user, i) => {
+        // Add funds to user
+        await stakingToken.mint(user.wallet.address, parseEther("1"));
+
+        // Approve token and stake in IDO
+        await stakingToken
+          .connect(user.wallet)
+          .approve(ido.address, user.stakeAmount);
+
+        console.log(`User ${i + 1} staking in IDO: ${user.stakeAmount}`);
+        const tx = await ido.connect(user.wallet).stake(user.stakeAmount);
+
+        // Verify user state is set correctly
+        const userState = await ido.users(user.wallet.address);
+        expect(userState.stakeAmount.sub(user.stakeAmount)).to.equal(0);
+        expect(+userState.stakeTime.toString()).to.gt(1);
+      })
+    );
+    console.log("");
+    // Verify totalStaked
+    console.log("Total staked in IDO:", (await ido.totalStaked()).toString());
+    expect(await ido.totalStaked()).to.eq(parseEther("0.4"));
+
+    console.log("");
+    console.log(`User 1 withdrawing stake: ${users[0].stakeAmount}`);
+    console.log("");
+
+    await expect(
+      ido.connect(users[0].wallet).withdraw(users[0].stakeAmount)
+    ).to.be.revertedWith("Tokens still locked");
+
+    console.log("Total staked in IDO:", (await ido.totalStaked()).toString());
+
+    // console.log(await ido.beneficiary(), ido.address);
+    // console.log(await ido.start());
+    // console.log(ido);
+
+    console.log(
+      "amount",
+      (
+        await ido["vestedAmount(address,uint64)"](stakingToken.address, 0)
+      ).toString()
+    );
+
+    // console.log(await ido.released(stakingToken.address));
+    // console.log(await ido["release(address)"](stakingToken.address));
+    // console.log((await stakingToken.balanceOf(ido.address)).toString());
+    // await ido.vestedAmount(stakingToken.address, Date.now() / 1000)
+    // expect(await ido.totalStaked()).to.eq(parseEther("0.1"));
+
+    console.log("User 2 claiming reward");
+    // await ido.connect(users[1].wallet).claim();
+
+    // expect(await rewardToken.balanceOf(users[1].wallet.address)).to.eq(
+    //   parseEther("0.1")
+    // );
+    // await ido.connect(staker1).withdraw(stakeAmount);
+    // console.log("", user.stakeAmount.toString());
+    // const setGreetingTx = await ido.setGreeting("Hola, mundo!");
+
+    // wait until the transaction is mined
+    // await setGreetingTx.wait();
+
+
+    */
+  });
+});
