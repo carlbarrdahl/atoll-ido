@@ -36,7 +36,7 @@ function StakeBox({}) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        stake(amount);
+        stake(amount).then(() => setAmount(""));
       }}
     >
       <Box

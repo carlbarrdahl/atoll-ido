@@ -207,6 +207,15 @@ export function useContracts() {
         const rewardAddress = await ido.rewardToken();
         const stakingToken = new Contract(stakingAddress, Token.abi, wallet);
         const rewardToken = new Contract(rewardAddress, Token.abi, wallet);
+
+        console.log(
+          "IDO StakingdToken balance:",
+          await stakingToken.balanceOf(await wallet.getAddress())
+        );
+        console.log(
+          "IDO RewardToken balance:",
+          await rewardToken.balanceOf(await wallet.getAddress())
+        );
         setContracts({ ido, stakingToken, rewardToken });
       }
 

@@ -67,7 +67,7 @@ const WithdrawBox = ({}) => {
           disabled={isWithdrawing || user.isLoading}
           type="submit"
         >
-          Withdraw
+          {isWithdrawing ? <Spinner /> : "Withdraw"}
         </Button>
         <Button
           colorScheme="purple"

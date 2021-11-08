@@ -33,7 +33,7 @@ const TokenAllocation = ({ project }) => {
           {isLoading ? (
             <SkeletonText width={10} noOfLines={1} />
           ) : (
-            formatMoney(data?.toString(), 2)
+            formatMoney(data, 2)
           )}
         </Text>
       </Flex>

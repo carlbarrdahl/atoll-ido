@@ -29,7 +29,7 @@ Wasn't able to finish in time so some features are not implemented yet.
 ---
 
 - Demo: https://atoll-ido.web.app
-- Video: https://www.loom.com/share/
+- Video: https://www.loom.com/share/c45cd1772b934431a32cca01db255781
 
 #### Created as a submission to DeFi & Cross-Chain Interoperability Hackathon
 

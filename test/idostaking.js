@@ -58,7 +58,7 @@ const {
 describe("IDO", function () {
   before(() => {});
   it("Should create a new IDO", async function () {
-    this.timeout(60000);
+    this.timeout(3 * 60 * 1000);
     const { wallet, provider } = await setup();
     const ethers = getEthers();
     console.log(wallet);
@@ -95,22 +95,23 @@ describe("IDO", function () {
     )
       .connect(wallet)
       .deploy("RewardToken", "RT");
+    const walletAddress = await wallet.getAddress();
+    await stakingToken.mint(walletAddress, hre.ethers.utils.parseEther("100"));
+    await rewardToken.mint(walletAddress, hre.ethers.utils.parseEther("200"));
+    // console.log(await stakingToken.balanceOf(await wallet.getAddress()));
+    // console.log(await rewardToken.balanceOf(await wallet.getAddress()));
+    const vestingPeriod = 3 * 60; // 3 minutes
 
-    await stakingToken.mint(await wallet.getAddress(), String(1000e18));
-    await rewardToken.mint(await wallet.getAddress(), String(2000e18));
-    console.log(await stakingToken.balanceOf(await wallet.getAddress()));
-    const vestingPeriod = 3; // seconds
-
-    await stakingToken.mint(
-      "0xB0FEce67b1497a47f4b385512022799583FA2456",
-      String(10e18)
-    );
     console.log("ST", stakingToken.address);
     console.log("RT", rewardToken.address);
+    await stakingToken.mint(
+      "0xB0FEce67b1497a47f4b385512022799583FA2456",
+      hre.ethers.utils.parseEther("10")
+    );
     const ido = await hre.ethers.ContractFactory.fromSolidity(IDO)
       .connect(wallet)
       .deploy(stakingToken.address, rewardToken.address, vestingPeriod);
-    console.log(ido.address);
+    console.log("IDO", ido.address);
     // await token.approve(ido.address, hre.ethers.utils.parseEther("0.1"));
     // await ido.stake(hre.ethers.utils.parseEther("0.1"));
     console.log(await ido.totalStaked());

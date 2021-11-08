@@ -730,8 +730,8 @@
       ]
     },
     "/home/carl/dev/labs/ido-project/atoll-ido/contracts/IDO.sol": {
-      "lastModificationDate": 1636382732245,
-      "contentHash": "4faad1d37bdd59a4cf51892b539ba384",
+      "lastModificationDate": 1636395333173,
+      "contentHash": "7df661667c68d7e71e15e23935306c4d",
       "sourceName": "contracts/IDO.sol",
       "solcConfig": {
         "version": "0.8.4",

@@ -53,7 +53,7 @@ module.exports = [
     token_symbol: "MYRA",
     ido_readiness_state: "applications_open",
     pool_contracts_available: false,
-    pool_contract_address: "0xb27E42e47945BbD329bcFDE155E9E441BBEa20A0",
+    pool_contract_address: "0x40FD21F9949C2DC17F74D422d34699339615cd41",
     pool_chain: "",
     finalized: false,
     applications_open_at: "2021-11-01T15:00:00.000Z",
@@ -62,7 +62,7 @@ module.exports = [
     pool_progress: 0,
     main_pool_id: null,
     pool_token_to: "",
-    pool_token_address: "0x2Ec6407504abFe503347e38D5a298D615DBBC0DD",
+    // pool_token_address: "0x2Ec6407504abFe503347e38D5a298D615DBBC0DD",
   },
 
   {
@@ -120,7 +120,7 @@ module.exports = [
     ido_readiness_state: "ready",
     pool_contracts_available: true,
     // pool_contract_address: "0x2be1C2E4aF39b335f15c3E682683156664EAb2Dd",
-    pool_contract_address: "0xb27E42e47945BbD329bcFDE155E9E441BBEa20A0",
+    pool_contract_address: "0x40FD21F9949C2DC17F74D422d34699339615cd41",
     pool_chain: "ethereum",
     finalized: true,
     applications_open_at: null,
@@ -129,7 +129,7 @@ module.exports = [
     pool_progress: 100,
     main_pool_id: 255,
     pool_token_to: "ETH",
-    pool_token_address: "0x2Ec6407504abFe503347e38D5a298D615DBBC0DD",
+    // pool_token_address: "0x2Ec6407504abFe503347e38D5a298D615DBBC0DD",
     // pool_token_address: "0x727f064a78dc734d33eec18d5370aef32ffd46e4",
   },
 ];

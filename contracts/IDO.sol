@@ -25,11 +25,7 @@ contract IDO is VestingWallet, AccessControl, Ownable {
 
     event Stake(address indexed wallet, uint256 amount, uint256 date);
     event Withdraw(address indexed wallet, uint256 amount, uint256 date);
-    event Claimed(
-        address indexed wallet,
-        IERC20 indexed rewardToken,
-        uint256 amount
-    );
+    event Claimed(address indexed wallet, uint256 amount, uint256 date);
 
     uint256 public totalStaked;
     uint256 public vestingPeriod;
@@ -82,16 +78,17 @@ contract IDO is VestingWallet, AccessControl, Ownable {
 
     function withdraw(uint256 amount) external returns (uint256) {
         // Calculate to see if user is allowed to withdraw
-        User memory user = users[msg.sender];
+        User storage user = users[msg.sender];
         require(
             block.timestamp >= user.stakeTime + vestingPeriod,
             "Tokens still locked"
         );
 
-        IERC20(stakingToken).safeTransfer(msg.sender, amount);
-
         user.stakeAmount -= amount;
         totalStaked -= amount;
+
+        IERC20(stakingToken).safeTransfer(msg.sender, amount);
+
         emit Withdraw(msg.sender, amount, block.timestamp);
         return amount;
     }
@@ -103,12 +100,13 @@ contract IDO is VestingWallet, AccessControl, Ownable {
             "Tokens still locked"
         );
 
-        uint256 amount = user.stakeAmount * 2; // Just return twice the amount as staked for now
+        uint256 amount = user.stakeAmount * 2; // Just return 2x the amount as staked for now
 
         user.stakeTime = block.timestamp;
         user.claimedRewards += amount;
+
         IERC20(rewardToken).safeTransfer(msg.sender, amount);
-        emit Claimed(msg.sender, rewardToken, amount);
+        emit Claimed(msg.sender, amount, block.timestamp);
 
         return amount;
     }
