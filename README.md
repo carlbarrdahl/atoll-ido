@@ -2,6 +2,8 @@
 
 IDO launchpad built for DeFi & Cross-Chain Interoperability Hackathon.
 
+![](screenshot1.png)
+
 _(Uses data from [Polkastarter](https://polkastarter.com/))_
 
 ### Works like this:
@@ -28,9 +30,6 @@ Wasn't able to finish in time so some features are not implemented yet.
 
 - Demo: https://atoll-ido.web.app
 - Video: https://www.loom.com/share/
-
-![](screenshot1.png)
-![](screenshot_shop1.png)
 
 #### Created as a submission to DeFi & Cross-Chain Interoperability Hackathon
 
