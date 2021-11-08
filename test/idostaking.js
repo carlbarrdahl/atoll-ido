@@ -89,17 +89,22 @@ describe("IDO", function () {
     )
       .connect(wallet)
       .deploy("StakingToken", "ST");
+
     const rewardToken = await hre.ethers.ContractFactory.fromSolidity(
       ERC20Mintable
     )
       .connect(wallet)
       .deploy("RewardToken", "RT");
 
-    await stakingToken.mint(await wallet.getAddress(), String(100e18));
-    await rewardToken.mint(await wallet.getAddress(), String(100e18));
+    await stakingToken.mint(await wallet.getAddress(), String(1000e18));
+    await rewardToken.mint(await wallet.getAddress(), String(2000e18));
     console.log(await stakingToken.balanceOf(await wallet.getAddress()));
     const vestingPeriod = 3; // seconds
 
+    await stakingToken.mint(
+      "0xB0FEce67b1497a47f4b385512022799583FA2456",
+      String(10e18)
+    );
     console.log("ST", stakingToken.address);
     console.log("RT", rewardToken.address);
     const ido = await hre.ethers.ContractFactory.fromSolidity(IDO)

@@ -2,7 +2,7 @@
 
 IDO launchpad built for DeFi & Cross-Chain Interoperability Hackathon.
 
-![](screenshot1.png)
+![](screenshot2.png)
 
 _(Uses data from [Polkastarter](https://polkastarter.com/))_
 

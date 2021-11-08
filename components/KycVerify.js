@@ -64,6 +64,7 @@ export function KycStatus() {
     return (
       <Flex mr={2} alignItems="center">
         <Badge
+          px={2}
           colorScheme="green"
           height="100%"
           sx={{ display: "flex", alignItems: "center" }}

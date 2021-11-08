@@ -1,11 +1,11 @@
-import { formatDistanceToNow, subDays } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 
-export function formatMoney(val) {
+export function formatMoney(val = "", decimals = 0) {
   return val.toLocaleString("en-US", {
     currency: "USD",
     style: "currency",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
   });
 }
 
